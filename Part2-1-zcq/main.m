@@ -7,11 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "NSStringSpeech.m"
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        printf("please input your string:\n") ;
+        NSData *data = [[NSFileHandle fileHandleWithStandardInput] availableData];
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        [NSString speech:string] ;
+      
+        NSString * str = @"hello world" ;
+//        [str configureAppend] ;
+//        [str configureReplacingRangeWithStringProperty] ;
+        str = str.replacingRangeWithString(NSMakeRange(6, 5),@"iOS").append(@" hhhhh") ;
+        NSLog(@"%@",str) ;
+        };
+    return 0 ;
     }
-    return 0;
-}
+/*
+ NSString * str = @"hello world" ;
+ str = [[str stringByRe
+ placingCharactersInRange:NSMakeRange(6,5) withString:@"iOS"] stringByAppendingString:@" hhhhh"] ;
+ NSLog(@"%@",str) ;*/
